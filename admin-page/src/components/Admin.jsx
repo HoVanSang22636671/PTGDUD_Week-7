@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { DataGrid } from '@mui/x-data-grid';
 
 function Admin() {
@@ -17,6 +17,40 @@ function Admin() {
         { id: 6, name: 'Hailey Adams', company: 'FlowRush', orderValue: 922, orderDate: '10/06/2023', status: 'Completed' },
     ]);
 
+    useEffect(() => {
+        const fetchOverviewData = async () => {
+            try {
+                const turnoverRes = await fetch('API_URL/turnover');
+                const profitRes = await fetch('API_URL/profit');
+                const newCustomerRes = await fetch('API_URL/new-customer');
+
+                const turnoverData = await turnoverRes.json();
+                const profitData = await profitRes.json();
+                const newCustomerData = await newCustomerRes.json();
+
+                setOverviewData({
+                    turnover: turnoverData.value,
+                    profit: profitData.value,
+                    newCustomer: newCustomerData.value,
+                });
+            } catch (error) {
+                console.error('Error fetching overview data:', error);
+            }
+        };
+
+        const fetchTableData = async () => {
+            try {
+                const res = await fetch('API_URL/table-data');
+                const data = await res.json();
+                setTableData(data);
+            } catch (error) {
+                console.error('Error fetching overview data: ', error);
+            }
+        }
+
+        fetchOverviewData();
+        fetchTableData();
+    }, []);
     const columns = [
         { field: 'name', headerName: 'Customer Name', width: 150 },
         { field: 'company', headerName: 'Company', width: 150 },
