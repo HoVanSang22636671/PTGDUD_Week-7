@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { DataGrid } from '@mui/x-data-grid';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 function Admin() {
     const [overviewData, setOverviewData] = useState({
@@ -67,12 +67,12 @@ function Admin() {
                     <p>LOGO</p>
                 </div>
                 <div className="menu">
-                    <Link to="/" className="menu-item active">Dashboard</Link>
-                    <Link to="/projects" className="menu-item">Projects</Link>
-                    <Link to="/teams" className="menu-item">Teams</Link>
-                    <Link to="/analytics" className="menu-item">Analytics</Link>
-                    <Link to="/messages" className="menu-item">Messages</Link>
-                    <Link to="/integration" className="menu-item">Integration</Link>
+                    <NavLink to="/" end className={({ isActive }) => isActive ? "menu-item active" : "menu-item"}>Dashboard</NavLink>
+                    <NavLink to="/projects" className={({ isActive }) => isActive ? "menu-item active" : "menu-item"}>Projects</NavLink>
+                    <NavLink to="/teams" className={({ isActive }) => isActive ? "menu-item active" : "menu-item"}>Teams</NavLink>
+                    <NavLink to="/analytics" className={({ isActive }) => isActive ? "menu-item active" : "menu-item"}>Analytics</NavLink>
+                    <NavLink to="/messages" className={({ isActive }) => isActive ? "menu-item active" : "menu-item"}>Messages</NavLink>
+                    <NavLink to="/integration" className={({ isActive }) => isActive ? "menu-item active" : "menu-item"}>Integration</NavLink>
                 </div>
             </div>
             <div className="main-content">
