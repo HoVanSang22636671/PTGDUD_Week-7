@@ -1,10 +1,12 @@
 import React from 'react';
-
+import projectIcon from '../assets/Lab_05/Folder.png'
 function Projects() {
     return (
-        <div className="content">
-            <h3>Projects</h3>
-            <p>This is the projects page. You can manage your current projects here.</p>
+        <div className='flex items-center justify-between px-6 py-4'>
+            <div className="flex items-center space-x-2">
+                <img src={projectIcon} alt="" className="w-5 h-5" />
+                <h3 className="font-semibold text-lg">Project</h3>
+            </div>
         </div>
     );
 }
